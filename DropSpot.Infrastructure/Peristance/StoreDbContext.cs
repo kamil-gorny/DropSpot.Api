@@ -9,6 +9,7 @@ internal class StoreDbContext(DbContextOptions<StoreDbContext> options) : DbCont
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+        modelBuilder.Entity<Product>().HasMany(r => r.Sizes).WithOne().HasForeignKey(s => s.ProductId);
       
     }
 }
