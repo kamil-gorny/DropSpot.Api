@@ -14,10 +14,10 @@ public static class ServiceCollectionExtension
     {
         services.AddDbContext<StoreDbContext>(options =>
         {
-            options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
+            options.UseNpgsql(configuration.GetConnectionString("StoreDb"));
         });
         
         services.AddScoped<IProductRepository, ProductRepository>();
-        services.AddScoped<IProductSeeder, ProductSeeder>();
+        //services.AddScoped<IProductSeeder, ProductSeeder>();
     }
 }
