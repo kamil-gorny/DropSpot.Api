@@ -1,6 +1,7 @@
 using DropSpot.Domain.Repositories;
 using DropSpot.Infrastructure.Peristance;
 using DropSpot.Infrastructure.Repositories;
+using DropSpot.Infrastructure.Seeders;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,5 +18,6 @@ public static class ServiceCollectionExtension
         });
         
         services.AddScoped<IProductRepository, ProductRepository>();
+        services.AddScoped<IProductSeeder, ProductSeeder>();
     }
 }
