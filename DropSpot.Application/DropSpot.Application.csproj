@@ -13,6 +13,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\DropSpot.Domain\DropSpot.Domain.csproj" />
+      <ProjectReference Include="..\DropSpot.Infrastructure\DropSpot.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

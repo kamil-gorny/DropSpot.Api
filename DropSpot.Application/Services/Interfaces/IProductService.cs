@@ -6,7 +6,7 @@ namespace DropSpot.Application.Services.Interfaces;
 
 public interface IProductService
 {
-    public ServiceResult CreateAsync(CreateProductServiceRequest request);
-    public ServiceResult<IEnumerable<GetProductServiceResponse>> GetAllAsync();
-    public ServiceResult<GetProductServiceResponse> GetById();
+    Task<ServiceResult> CreateAsync(CreateProductServiceRequest request);
+    Task<ServiceResult<IEnumerable<GetProductServiceResponse>>> GetAllAsync();
+    public Task<ServiceResult<GetProductServiceResponse>> GetById();
 }
