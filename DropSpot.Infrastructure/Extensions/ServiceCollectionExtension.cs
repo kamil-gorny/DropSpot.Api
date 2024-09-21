@@ -18,6 +18,6 @@ public static class ServiceCollectionExtension
         });
         
         services.AddScoped<IProductRepository, ProductRepository>();
-        //services.AddScoped<IProductSeeder, ProductSeeder>();
+        services.AddScoped<IProductSeeder, ProductSeeder>();
     }
 }
