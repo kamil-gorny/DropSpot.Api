@@ -21,7 +21,7 @@ public class ProductController : ControllerBase
         var result = await _productService.GetAllAsync();
         return result.StatusCode switch
         {
-            HttpStatusCode.OK => Ok(),
+            HttpStatusCode.OK => Ok(result.Data),
             HttpStatusCode.InternalServerError => StatusCode(StatusCodes.Status500InternalServerError),
             _ => throw new NotImplementedException()
         };

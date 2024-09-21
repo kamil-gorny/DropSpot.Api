@@ -1,3 +1,4 @@
+using System.Net;
 using AutoMapper;
 using DropSpot.Application.DataModel;
 using DropSpot.Application.DataModel.Requests;
@@ -35,7 +36,23 @@ public class ProductService : IProductService
 
     public async Task<ServiceResult<IEnumerable<GetProductServiceResponse>>> GetAllAsync()
     {
-        throw new NotImplementedException();
+        try
+        {
+            var result = await _productRepository.GetAllAsync();
+            var mappedResult = result.Select(product => _mapper.Map<GetProductServiceResponse>(product)).ToList();
+            return new ServiceResult<IEnumerable<GetProductServiceResponse>>()
+            {
+                StatusCode = HttpStatusCode.OK,
+                Data = mappedResult,
+            };
+        }
+        catch (Exception ex)
+        {
+            return new ServiceResult<IEnumerable<GetProductServiceResponse>>()
+            {
+                StatusCode = HttpStatusCode.InternalServerError
+            };
+        }
     }
 
     public async Task<ServiceResult<GetProductServiceResponse>> GetById()

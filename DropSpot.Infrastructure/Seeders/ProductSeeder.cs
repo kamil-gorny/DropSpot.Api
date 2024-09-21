@@ -11,7 +11,7 @@ internal class ProductSeeder(StoreDbContext dbContext) : IProductSeeder
     {
         if (await dbContext.Database.CanConnectAsync())
         {
-            if (dbContext.Products.Any())
+            if (!dbContext.Products.Any())
             {
                 var products = GetProducts();
                 dbContext.Products.AddRange(products);
@@ -32,7 +32,7 @@ internal class ProductSeeder(StoreDbContext dbContext) : IProductSeeder
                 Description = "All cotton classic Supreme t-shirt with printed logos on chest.",
                 ImageUrl = "https://eu.supreme.com/cdn/shop/files/T14_FW24_MartineLogoTee_Black_720x.jpg?v=1725911179",
                 Name = "Custom T-shirt",
-                Price = 46,
+                Price = "46",
                 Sizes =
                 [
                     new()

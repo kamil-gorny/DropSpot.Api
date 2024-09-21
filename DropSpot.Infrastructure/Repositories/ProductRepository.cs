@@ -10,7 +10,7 @@ internal class ProductRepository(StoreDbContext dbContext) : IProductRepository
 {
     public async Task<IEnumerable<Product>> GetAllAsync()
     {
-        return await dbContext.Products.ToListAsync();
+        return await dbContext.Products.Include(p => p.Sizes).ToListAsync();
     }
 
     public async Task<Product?> GetByIdAsync(int id)
