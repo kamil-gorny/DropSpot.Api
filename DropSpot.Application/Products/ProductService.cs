@@ -1,13 +1,11 @@
 using System.Net;
 using AutoMapper;
-using DropSpot.Application.DataModel;
-using DropSpot.Application.DataModel.Requests;
-using DropSpot.Application.DataModel.Responses;
-using DropSpot.Application.Services.Interfaces;
+using DropSpot.Application.Common;
+using DropSpot.Application.Products.Dtos;
 using DropSpot.Domain.Entities;
 using DropSpot.Domain.Repositories;
 
-namespace DropSpot.Application.Services.Implementations;
+namespace DropSpot.Application.Products;
 
 public class ProductService : IProductService
 {
@@ -20,7 +18,7 @@ public class ProductService : IProductService
         _mapper = mapper;
     }
 
-    public async Task<ServiceResult> CreateAsync(CreateProductServiceRequest request)
+    public async Task<ServiceResult> CreateAsync(CreateProductDto request)
     {
         try
         {
@@ -34,13 +32,13 @@ public class ProductService : IProductService
         }
     }
 
-    public async Task<ServiceResult<IEnumerable<GetProductServiceResponse>>> GetAllAsync()
+    public async Task<ServiceResult<IEnumerable<GetProductDto>>> GetAllAsync()
     {
         try
         {
             var result = await _productRepository.GetAllAsync();
-            var mappedResult = result.Select(product => _mapper.Map<GetProductServiceResponse>(product)).ToList();
-            return new ServiceResult<IEnumerable<GetProductServiceResponse>>()
+            var mappedResult = result.Select(product => _mapper.Map<GetProductDto>(product)).ToList();
+            return new ServiceResult<IEnumerable<GetProductDto>>()
             {
                 StatusCode = HttpStatusCode.OK,
                 Data = mappedResult,
@@ -48,14 +46,14 @@ public class ProductService : IProductService
         }
         catch (Exception ex)
         {
-            return new ServiceResult<IEnumerable<GetProductServiceResponse>>()
+            return new ServiceResult<IEnumerable<GetProductDto>>()
             {
                 StatusCode = HttpStatusCode.InternalServerError
             };
         }
     }
 
-    public async Task<ServiceResult<GetProductServiceResponse>> GetById()
+    public async Task<ServiceResult<GetProductDto>> GetById()
     {
         throw new NotImplementedException();
     }

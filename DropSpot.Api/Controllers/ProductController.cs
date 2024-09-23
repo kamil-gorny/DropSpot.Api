@@ -1,5 +1,5 @@
 using System.Net;
-using DropSpot.Application.Services.Interfaces;
+using DropSpot.Application.Products;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DropSpot.Api.Controllers;

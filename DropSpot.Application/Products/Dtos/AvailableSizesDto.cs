@@ -1,6 +1,8 @@
-namespace DropSpot.Application.DataModel.Responses;
+using DropSpot.Application.Products.Enums;
 
-public class AvailableSizesResponseModel
+namespace DropSpot.Application.Products.Dtos;
+
+public class AvailableSizesDto
 {
     public Guid Id { get; set; }
     public SizeResponseModel Size { get; set; }

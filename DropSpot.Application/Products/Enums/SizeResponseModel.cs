@@ -1,4 +1,4 @@
-namespace DropSpot.Application.DataModel;
+namespace DropSpot.Application.Products.Enums;
 
 public enum SizeResponseModel
 {

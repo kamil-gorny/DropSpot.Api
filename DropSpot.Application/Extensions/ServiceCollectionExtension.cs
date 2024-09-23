@@ -1,6 +1,4 @@
-using DropSpot.Application.Services;
-using DropSpot.Application.Services.Implementations;
-using DropSpot.Application.Services.Interfaces;
+using DropSpot.Application.Products;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DropSpot.Application.Extensions;

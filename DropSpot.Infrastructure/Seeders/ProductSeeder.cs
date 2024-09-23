@@ -44,6 +44,27 @@ internal class ProductSeeder(StoreDbContext dbContext) : IProductSeeder
                     }
                 ]
 
+            },
+            new ()
+            {
+                Id = new Guid("6AEC8886-187F-48D7-B504-F1EF7F50642A"),
+                Category = "T-shirt",
+                Color = "black",
+                Description = "All cotton classic Supreme t-shirt with printed logos on chest.",
+                ImageUrl = "https://eu.supreme.com/cdn/shop/files/T14_FW24_MartineLogoTee_Black_720x.jpg?v=1725911179",
+                Name = "Custom T-shirt",
+                Price = "46",
+                Sizes =
+                [
+                    new()
+                    {
+                        Id = new Guid("C8CBF71B-7818-4CB5-834F-531E246CEAED"),
+                        ProductId = new Guid("6AEC8886-187F-48D7-B504-F1EF7F50642A"),
+                        Quantity = 5,
+                        Size = Size.XLarge
+                    }
+                ]
+
             }
             
         ];
