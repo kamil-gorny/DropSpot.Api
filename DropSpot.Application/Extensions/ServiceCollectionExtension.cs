@@ -1,4 +1,6 @@
 using DropSpot.Application.Products;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DropSpot.Application.Extensions;
@@ -9,5 +11,7 @@ public static class ServiceCollectionExtension
     {
         services.AddScoped<IProductService, ProductService>();
         services.AddAutoMapper(typeof(ServiceCollectionExtension).Assembly);
+        services.AddValidatorsFromAssembly(typeof(ServiceCollectionExtension).Assembly)
+            .AddFluentValidationAutoValidation();
     }
 }
