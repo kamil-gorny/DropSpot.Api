@@ -4,7 +4,7 @@ using DropSpot.Domain.Entities;
 using DropSpot.Domain.Repositories;
 using MediatR;
 
-namespace DropSpot.Application.Products.Commands;
+namespace DropSpot.Application.Products.Commands.CreateProduct;
 
 public class CreateProductCommandHandler(IMapper mapper, IProductRepository productRepository) : IRequestHandler<CreateProductCommand,ServiceResult>
 {

@@ -1,7 +1,7 @@
 using DropSpot.Application.Common;
 using MediatR;
 
-namespace DropSpot.Application.Products.Commands;
+namespace DropSpot.Application.Products.Commands.CreateProduct;
 
 public class CreateProductCommand : IRequest<ServiceResult>
 {
