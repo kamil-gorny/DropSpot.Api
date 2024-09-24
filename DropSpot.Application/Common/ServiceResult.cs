@@ -1,9 +1,10 @@
 using System.Net;
 using System.Text;
+using MediatR;
 
 namespace DropSpot.Application.Common;
 
-public class ServiceResult
+public class ServiceResult : IRequest
 {
     public HttpStatusCode StatusCode { get; set; }
     public string Message;

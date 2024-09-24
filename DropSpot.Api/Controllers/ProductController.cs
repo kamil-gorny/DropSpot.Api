@@ -1,5 +1,7 @@
 using System.Net;
 using DropSpot.Application.Products;
+using DropSpot.Application.Products.Queries.GetAllProducts;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DropSpot.Api.Controllers;
@@ -8,17 +10,17 @@ namespace DropSpot.Api.Controllers;
 [Route("/api/product")]
 public class ProductController : ControllerBase
 {
-    private readonly IProductService _productService;
+    private readonly IMediator _mediator;
 
-    public ProductController(IProductService productService)
+    public ProductController(IMediator mediator)
     {
-        _productService = productService;
+        _mediator = mediator;
     }
 
     [HttpGet]
     public async Task<IActionResult> GetAllProducts()
     {
-        var result = await _productService.GetAllAsync();
+        var result = await _mediator.Send(new GetAllProductsQuery());
         return result.StatusCode switch
         {
             HttpStatusCode.OK => Ok(result.Data),

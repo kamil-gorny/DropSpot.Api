@@ -10,7 +10,6 @@ public static class ServiceCollectionExtension
     public static void AddApplication(this IServiceCollection services)
     {
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(ServiceCollectionExtension).Assembly));
-        services.AddScoped<IProductService, ProductService>();
         services.AddAutoMapper(typeof(ServiceCollectionExtension).Assembly);
         services.AddValidatorsFromAssembly(typeof(ServiceCollectionExtension).Assembly)
             .AddFluentValidationAutoValidation();
