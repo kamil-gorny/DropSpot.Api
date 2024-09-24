@@ -1,6 +1,9 @@
-namespace DropSpot.Application.Products.Dtos;
+using DropSpot.Application.Common;
+using MediatR;
 
-public class CreateProductDto
+namespace DropSpot.Application.Products.Commands;
+
+public class CreateProductCommand : IRequest<ServiceResult>
 {
     public required Guid Id { get; set; }
     public required string Name { get; set; }

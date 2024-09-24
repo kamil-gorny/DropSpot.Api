@@ -17,20 +17,7 @@ public class ProductService : IProductService
         _productRepository = productRepository;
         _mapper = mapper;
     }
-
-    public async Task<ServiceResult> CreateAsync(CreateProductDto request)
-    {
-        try
-        {
-            var product = _mapper.Map<Product>(request);
-            await _productRepository.CreateAsync(product);
-            return ServiceResult.Success();
-        }
-        catch (Exception ex)
-        {
-            return ServiceResult.InternalServerError(ex.Message);
-        }
-    }
+    
 
     public async Task<ServiceResult<IEnumerable<GetProductDto>>> GetAllAsync()
     {

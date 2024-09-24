@@ -1,4 +1,5 @@
 using AutoMapper;
+using DropSpot.Application.Products.Commands;
 using DropSpot.Domain.Entities;
 
 namespace DropSpot.Application.Products.Dtos;
@@ -7,7 +8,7 @@ public class ProductProfile : Profile
 {
     public ProductProfile()
     {
-        CreateMap<CreateProductDto, Product>();
+        CreateMap<CreateProductCommand, Product>();
         CreateMap<Product, GetProductDto>();
         CreateMap<AvailableSizes, AvailableSizesDto>();
     }
