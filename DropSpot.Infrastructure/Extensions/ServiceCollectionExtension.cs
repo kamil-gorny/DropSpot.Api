@@ -14,7 +14,7 @@ public static class ServiceCollectionExtension
     {
         services.AddDbContext<StoreDbContext>(options =>
         {
-            options.UseNpgsql(configuration.GetConnectionString("StoreDb"));
+            options.UseNpgsql(configuration.GetConnectionString("StoreDb")).EnableSensitiveDataLogging();
         });
         
         services.AddScoped<IProductRepository, ProductRepository>();
