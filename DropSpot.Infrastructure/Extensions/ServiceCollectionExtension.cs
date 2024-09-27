@@ -1,3 +1,4 @@
+using DropSpot.Domain.Entities;
 using DropSpot.Domain.Repositories;
 using DropSpot.Infrastructure.Peristance;
 using DropSpot.Infrastructure.Repositories;
@@ -16,7 +17,7 @@ public static class ServiceCollectionExtension
         {
             options.UseNpgsql(configuration.GetConnectionString("StoreDb")).EnableSensitiveDataLogging();
         });
-        
+        services.AddIdentityApiEndpoints<User>().AddEntityFrameworkStores<StoreDbContext>();
         services.AddScoped<IProductRepository, ProductRepository>();
         services.AddScoped<IProductSeeder, ProductSeeder>();
     }

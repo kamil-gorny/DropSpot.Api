@@ -1,5 +1,6 @@
 using DropSpot.Api.Middlewares;
 using DropSpot.Application.Extensions;
+using DropSpot.Domain.Entities;
 using DropSpot.Infrastructure.Extensions;
 using DropSpot.Infrastructure.Seeders;
 using Serilog;
@@ -35,10 +36,11 @@ await seeder.Seed();
 
 app.UseHttpsRedirection();
 app.MapControllers();
+app.MapGroup("api/identity").MapIdentityApi<User>();
 app.UseCors(x => x
     .AllowAnyMethod()
     .AllowAnyHeader()
-    .SetIsOriginAllowed(origin => true) // allow any origin
+    .SetIsOriginAllowed(origin => true) 
     .AllowCredentials());
 app.Run();
 

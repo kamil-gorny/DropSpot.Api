@@ -1,9 +1,10 @@
 using DropSpot.Domain.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace DropSpot.Infrastructure.Peristance;
 
-internal class StoreDbContext(DbContextOptions options) : DbContext(options)
+internal class StoreDbContext(DbContextOptions options) : IdentityDbContext<User>(options)
 {
     internal DbSet<Product> Products { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
