@@ -13,7 +13,7 @@ internal class ProductRepository(StoreDbContext dbContext) : IProductRepository
         return await dbContext.Products.Include(p => p.Sizes).ToListAsync();
     }
 
-    public async Task<Product?> GetByIdAsync(int id)
+    public async Task<Product?> GetByIdAsync(Guid id)
     {
         return await dbContext.Products.FindAsync(id);
     }
