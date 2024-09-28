@@ -1,3 +1,5 @@
+using DropSpot.Domain.Exceptions;
+
 namespace DropSpot.Api.Middlewares;
 
 public class ErrorHandlingMiddleware(ILogger<ErrorHandlingMiddleware> logger) : IMiddleware
@@ -7,6 +9,12 @@ public class ErrorHandlingMiddleware(ILogger<ErrorHandlingMiddleware> logger) : 
         try
         {
             await next.Invoke(context);
+        }
+        catch (NotFoundException ex)
+        {
+            logger.LogWarning(ex, ex.Message);
+            context.Response.StatusCode = 404;
+            await context.Response.WriteAsync(ex.Message);
         }
         catch (Exception ex)
         {
