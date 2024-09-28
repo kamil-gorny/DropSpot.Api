@@ -1,6 +1,7 @@
 using System.Net;
 using DropSpot.Application.Products;
 using DropSpot.Application.Products.Queries.GetAllProducts;
+using DropSpot.Application.Products.Queries.GetById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,5 +29,14 @@ public class ProductController : ControllerBase
             _ => throw new NotImplementedException()
         };
     }
-    
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetProductById([FromRoute] Guid id)
+    {
+        var result = await _mediator.Send(new GetProductByIdQuery()
+        {
+            Id = id
+        });
+        return Ok(result);
+    }
 }
