@@ -2,6 +2,7 @@ using System.Net;
 using DropSpot.Application.Products;
 using DropSpot.Application.Products.Queries.GetAllProducts;
 using DropSpot.Application.Products.Queries.GetById;
+using DropSpot.Application.Products.Queries.GetProductsByCategory;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -36,6 +37,16 @@ public class ProductController : ControllerBase
         var result = await _mediator.Send(new GetProductByIdQuery()
         {
             Id = id
+        });
+        return Ok(result);
+    }
+    
+    [HttpGet("{category}")]
+    public async Task<IActionResult> GetProductsByCategory([FromRoute] string category)
+    {
+        var result = await _mediator.Send(new GetProductsByCategoryQuery()
+        {
+            Category = category
         });
         return Ok(result);
     }

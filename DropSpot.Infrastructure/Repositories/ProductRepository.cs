@@ -17,6 +17,11 @@ internal class ProductRepository(StoreDbContext dbContext) : IProductRepository
     {
         return await dbContext.Products.FindAsync(id);
     }
+    
+    public async Task<IEnumerable<Product>> GetByCategoryAsync(string category)
+    {
+        return await dbContext.Products.Where(p => p.Category == category).ToListAsync();
+    }
 
     public async Task<Guid> CreateAsync(Product product)
     {
