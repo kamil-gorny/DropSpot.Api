@@ -1,4 +1,5 @@
 using DropSpot.Application.Products;
+using DropSpot.Application.User;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -9,6 +10,8 @@ public static class ServiceCollectionExtension
 {
     public static void AddApplication(this IServiceCollection services)
     {
+        services.AddScoped<IUserContext, UserContext>();
+        services.AddHttpContextAccessor();
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(ServiceCollectionExtension).Assembly));
         services.AddAutoMapper(typeof(ServiceCollectionExtension).Assembly);
         services.AddValidatorsFromAssembly(typeof(ServiceCollectionExtension).Assembly)
