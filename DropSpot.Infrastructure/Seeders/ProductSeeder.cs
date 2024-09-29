@@ -1,5 +1,7 @@
+using DropSpot.Domain.Constants;
 using DropSpot.Domain.Entities;
 using DropSpot.Infrastructure.Peristance;
+using Microsoft.AspNetCore.Identity;
 
 namespace DropSpot.Infrastructure.Seeders;
 
@@ -17,7 +19,23 @@ internal class ProductSeeder(StoreDbContext dbContext) : IProductSeeder
                 dbContext.Products.AddRange(products);
                 await dbContext.SaveChangesAsync();
             }
+            if(!dbContext.Roles.Any())
+            {
+                var roles = GetRoles();
+                dbContext.Roles.AddRange(roles);
+                await dbContext.SaveChangesAsync();
+            }
         }
+    }
+
+    private IEnumerable<IdentityRole> GetRoles()
+    {
+        List<IdentityRole> roles =
+        [
+            new IdentityRole(UserRoles.User),
+            new IdentityRole(UserRoles.Admin)
+        ];
+        return roles;
     }
 
     private IEnumerable<Product> GetProducts()
