@@ -41,7 +41,7 @@ public class ProductController : ControllerBase
         return Ok(result);
     }
     
-    [HttpGet("{category}")]
+    [HttpGet("category/{category}")]
     public async Task<IActionResult> GetProductsByCategory([FromRoute] string category)
     {
         var result = await _mediator.Send(new GetProductsByCategoryQuery()
