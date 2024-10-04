@@ -17,4 +17,9 @@
       <ProjectReference Include="..\DropSpot.Domain\DropSpot.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Orders\Commands\" />
+      <Folder Include="Orders\Queries\" />
+    </ItemGroup>
+
 </Project>
