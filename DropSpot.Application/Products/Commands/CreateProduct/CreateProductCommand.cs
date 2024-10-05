@@ -3,7 +3,7 @@ using MediatR;
 
 namespace DropSpot.Application.Products.Commands.CreateProduct;
 
-public class CreateProductCommand : IRequest<ServiceResult>
+public class CreateProductCommand : IRequest
 {
     public required Guid Id { get; set; }
     public required string Name { get; set; }
