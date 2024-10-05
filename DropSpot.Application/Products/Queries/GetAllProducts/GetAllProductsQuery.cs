@@ -4,7 +4,7 @@ using MediatR;
 
 namespace DropSpot.Application.Products.Queries.GetAllProducts;
 
-public class GetAllProductsQuery : IRequest<ServiceResult<IEnumerable<GetProductDto>>>
+public class GetAllProductsQuery : IRequest<IEnumerable<GetProductDto>>
 {
     
 }
