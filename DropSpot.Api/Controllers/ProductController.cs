@@ -23,12 +23,7 @@ public class ProductController : ControllerBase
     public async Task<IActionResult> GetAllProducts()
     {
         var result = await _mediator.Send(new GetAllProductsQuery());
-        return result.StatusCode switch
-        {
-            HttpStatusCode.OK => Ok(result.Data),
-            HttpStatusCode.InternalServerError => StatusCode(StatusCodes.Status500InternalServerError),
-            _ => throw new NotImplementedException()
-        };
+        return Ok(result);
     }
 
     [HttpGet("{id}")]
